@@ -2,6 +2,7 @@
 """
 BasicAuth class for the API
 """
+import re
 from typing import Tuple, TypeVar
 from api.v1.auth.auth import Auth
 from models.user import User
@@ -109,7 +110,7 @@ class BasicAuth(Auth):
         if decoded_auth is None:
             return None
 
-        user_credentials = self.extract_user_credentials(decode_auth)
+        user_credentials = self.extract_user_credentials(decoded_auth)
         if user_credentials is None:
             return None
 
