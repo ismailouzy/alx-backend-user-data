@@ -17,11 +17,11 @@ class BasicAuth(Auth):
         returns the base64 par of the auth header
         for basic auth
         """
-        if authorization_head is None:
+        if authorization_header is None:
             return None
-        elif type(authorization_head) != str:
+        elif type(authorization_header) != str:
             return None
-        elif authorization_head.startwith('Basic '):
-            return authorization_head[5:]
+        elif authorization_header.startswith('Basic '):
+            return authorization_header[5:]
         else:
             return None
