@@ -5,6 +5,7 @@ BasicAuth class for the API
 from api.v1.auth.auth import Auth
 import base64
 
+
 class BasicAuth(Auth):
     """
     BasicAuth class to manage API basic authentication
@@ -25,7 +26,10 @@ class BasicAuth(Auth):
             return None
         return authorization_header[6:]
 
-    def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
+    def decode_base64_authorization_header(
+            self,
+            base64_authorization_header: str,
+            ) -> str:
         """
         decodes a value of a base64 string
         """
@@ -39,4 +43,3 @@ class BasicAuth(Auth):
             return decoded_str
         except Exception:
             return None
-
