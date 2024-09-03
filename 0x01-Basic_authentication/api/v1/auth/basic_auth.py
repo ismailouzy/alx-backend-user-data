@@ -94,7 +94,7 @@ class BasicAuth(Auth):
         """
         overloads Auth and retrieves the User instance for a request
         """
-	if request is None:
+        if request is None:
             return None
 
         auth_header = self.authorization_header(request)
@@ -109,10 +109,10 @@ class BasicAuth(Auth):
         if decoded_auth is None:
             return None
 
-        user_credentials = self.extract_user_credentials(decoded_auth)
+        user_credentials = self.extract_user_credentials(decode_auth)
         if user_credentials is None:
             return None
 
-        user_email, user_pwd = user_credentials
+        user_email, usr_pwd = user_credentials
 
         return self.user_object_from_credentials(user_email, user_pwd)
