@@ -21,7 +21,7 @@ class SessionAuth(Auth):
         id = str(uuid.uuid4())
         self.user_id_by_session_id[id] = user_id
         return id
-    
+
     def user_id_for_session_id(self, session_id: str = None) -> str:
         """gives the user id based on the session id
         """
