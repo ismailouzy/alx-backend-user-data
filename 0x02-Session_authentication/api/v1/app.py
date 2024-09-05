@@ -18,6 +18,9 @@ auth_type = getenv("AUTH_TYPE")
 if auth_type == "basic_auth":
     from api.v1.auth.basic_auth import BasicAuth
     auth = BasicAuth()
+elif auth_type == "session_auth":
+    from api.vi.auth.session_auth import SessionAuth
+    auth = SessionAuth()
 elif auth_type:
     from api.v1.auth.auth import Auth
     auth = Auth()
