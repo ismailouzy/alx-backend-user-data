@@ -30,16 +30,20 @@ class Auth:
         else:
             raise ValueError(f"User {email} already exists")
 
-
     def valid_login(self, email: str, password: str) -> bool:
         """
         Validate login credentials.
         """
         try:
-            user = self._db.find_user_by(email=email)
-            if user and bcrypt.checkpw(password.encode('utf-8'), user.hashed_password):
-                return True
+            user = self._db.find_user_by(email)
+            if user:
+                encoded_password = password.encode('utf-8')
+                hashed_password = user.hashed_password
+                password_matches = bcrypt.checkpw(
+                    encoded_password, hashed_password
+            )
+                if password_matches:
+                    return True
             return False
-        except Exception as e:
-            print(f"Error validating login: {e}")
+        except Exception:
             return False
