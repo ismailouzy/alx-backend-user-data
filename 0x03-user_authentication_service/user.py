@@ -9,12 +9,12 @@ from typing import Optional
 
 Base = declarative_base()
 
+
 class User(Base):
     """
     User model class
     """
     __tablename__ = 'users'
-    
     id: int = Column(Integer, primary_key=True)
     email: str = Column(String(250), nullable=False)
     hashed_password: str = Column(String(250), nullable=False)
