@@ -3,7 +3,7 @@
 This module creates a simple Flask application to register users.
 """
 
-from flask import Flask, request, jsonify, abort, make_response, url_for, redirect
+from flask import Flask, request, jsonify, abort, make_response, redirect
 from auth import Auth
 
 
@@ -61,7 +61,7 @@ def logout():
         abort(403)
 
     AUTH.destroy_session(user.id)
-    return redirect(url_for("home"))
+    return redirect("/")
 
 
 if __name__ == "__main__":
