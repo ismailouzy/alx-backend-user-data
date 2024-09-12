@@ -35,13 +35,13 @@ class Auth:
         Validate login credentials.
         """
         try:
-            user = self._db.find_user_by(email)
+            user = self._db.find_user_by(email=email)
             if user:
                 encoded_password = password.encode('utf-8')
                 hashed_password = user.hashed_password
                 password_matches = bcrypt.checkpw(
                     encoded_password, hashed_password
-            )
+                )
                 if password_matches:
                     return True
             return False
