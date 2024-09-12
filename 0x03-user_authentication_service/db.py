@@ -42,3 +42,14 @@ class DB:
             self._session.rollback()
             new_user = None
         return new_user
+
+    def find_user_by(self, **kwargs) -> User:
+        """Find a user by arbitrary keyword arguments
+        """
+        try:
+            user = self._session.query(User).filter_by(**kwargs).one()
+        except NoResultFound:
+            raise NoResultFound("No user found with the given criteria.")
+        except InvalidRequestError:
+            raise InvalidRequestError("Invalid query arguments.")
+        return user
